@@ -13,8 +13,9 @@ polycalc/
 ```
 
 ## Future Plans
- - Computaion of properties of a polynomial
- - Division
+ - Computation of properties of a polynomial
+ - Computation of Division
+ - Mobile app
 
 ## Author
 
@@ -23,4 +24,6 @@ polycalc/
 
 ## My Other Projects
  - [A Convient Stereo Photo Generator](https://github.com/ztl8702/3dgenerator)
+ - [GoChat(P2P Chatting)](https://github.com/ztl8702/gochat)
+
  
