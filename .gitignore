@@ -1,0 +1,9 @@
+*.[oa]
+!*.out
+*~
+*.exe
+*.bak
+*.ppu
+build/
+backup/
+

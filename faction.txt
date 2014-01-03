@@ -1,0 +1,34 @@
+function RealtoFract(decimal: double): TFract;
+var
+  intNumerator, intDenominator, intNegative: integer; // 声明整数变量为长整数
+  dblFraction, dblDecimal, dblAccuracy, dblinteger: Double; // 声明浮点数为双精度
+  ans:TFract;
+begin
+  dblDecimal := decimal; //取得目标小数
+  if trunc(decimal) = decimal then // 如果是整数，则直转
+    ans.SetValue(trunc(decimal),1)
+  else
+  begin
+    if abs(decimal) > 1 then //如果小数大于1 如 10.24 ，进行拆解
+    begin
+      dblinteger := trunc(decimal); //取出整数部分
+      dblDecimal := abs(frac(decimal)); //取出小数部分
+    end
+    else dblDecimal := decimal;
+    dblAccuracy := 0.01; //设置精度
+    intNumerator := 0; //初始分子为0
+    intDenominator := 1; //初始分母为1
+    intNegative := 1; //符号标记为正
+    if dblDecimal < 0 then intNegative := -1; //如果目标为负，设置负标志位
+    dblFraction := 0; //设置分数值为 0/1
+    while Abs(dblFraction - dblDecimal) > dblAccuracy do //如果当前没有达到精度要求就继续循环
+    begin
+      if Abs(dblFraction) > Abs(dblDecimal) then //如果我们的分数大于目标
+        intDenominator := intDenominator + 1 //增加分母
+      else //否则
+        intNumerator := intNumerator + intNegative; //增加分子
+      dblFraction := intNumerator / intDenominator; //计算新的分数
+    end;
+    result.SetValue(intNumerator,intDenominator);
+  end;
+end;
